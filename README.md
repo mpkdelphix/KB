@@ -1,2 +1,3 @@
 # KB
 Delphix Knowledge Base
+Basically, these are short HOWTOs for various tasks at Delphix, such as awking out events from connector logs, etc....
