@@ -1,0 +1,70 @@
+    1  git
+    2  git help config
+    3  git help config chrome
+    7  git init .
+    8  git config
+    9  git config --local
+   10  git config
+   11  vi git_config_howto
+   12  git config --global user.email "mike.kennedy@delphix.com"
+   13  git config --global user.name "mpkdelphix"
+   14  git config --list
+   15  git config --list user
+   16  git config user --list
+   17  git config user
+   18  git --get config.user
+   19  git --get user.name
+   20  git --get confi
+   21  git config --list
+   22  git config --list hlep
+   23  git config --list help
+   24  git config --get user
+   25  git config --get name
+   26  git config --get user.email
+   27  git config --get user.*
+   29  git config --get user.name
+   30  git config --get user.email
+   31  git status
+   32  git add git_config_howto
+   33  git status 
+   34  curl github.com
+   36  curl -u mpkdelphix https://github.com/mpkdelphix/repos -d '{"name":"KBREPO"}'
+   37  curl -u mpkdelphix https://api.github.com/mpkdelphix/repos -d '{"name":"KBREPO"}'
+   39  curl -u mpkdelphix https://api.github.com/mpkdelphix/repos -d '{"name":"KBREPO"}'
+   40  echo "0#sPr1nTdz" |curl -u mpkdelphix https://api.github.com/mpkdelphix/repos -d '{"name": "KBREPO"}'
+   42  git remote add origin git@github.com:mpkdelphix/KB.git
+   43  git remote
+   44  git status
+   45  git push origin master
+   46  git branch
+   47  git remote
+   48  git status
+   49  git commit -m "first commit"
+   50  git push origin master
+   51  git remote hlep
+   52  git remote -v
+   53  git status
+   54  git push help
+   55  git push origin help
+   56  git push origin master help
+   57  git push origin master
+   58  git remote set-user origin https://github.com/mpkdelphix/KB.git
+   59  get remote set-url origin https://github.com/mpkdelphix/KB.git
+   60  git remote set-url origin https://github.com/mpkdelphix/KB.git
+   61  git push origin master
+   65  git clone https://github.com/mpkdelphix/KB.git
+   68  git status
+   70  git commit -m "first"
+   71  git add README.md 
+   72  git commit -m "Primero!"
+   73  git push origin master
+   74  git branch
+   75  git push origin main
+   76  git status
+   77  git log
+   78  histor|grep git
+   79  history|awk '/git/'
+   80  history|awk '/git/ {print $2}'
+   81  history|awk '/git/ {if x >=2 print x}'
+   82  history |awk '/git/'
+   83  history |awk '/git/' >gitz

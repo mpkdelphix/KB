@@ -1,0 +1,19 @@
+#GIT setup HOWTO
+0. login to github in your browser, create a repo called "KB"
+1.clone the git repo from your gitbash cli:
+git clone https://github.com/mpkdelphix/KB.git
+2. check status
+git status
+3. add changed README.md
+git add README.md
+4. Now we do our first commit 
+git commit -m "Primero!"
+5. Now we attempt to push our changed README.md back to github, this will open dialog boxes in your browser for username
+and your password - Git only accepts personal access tokens: Git->Settings->DeveloperSettings->Personal Access Token.
+CLick the X to close username dialogbox and enter your git user name at command line; Then click the X to close the dialog box for your Git password and enter your persoonal access token at the command-line; You are now fully authenticated
+git branch
+git push origin main
+git status
+git log
+
+

@@ -1,0 +1,2 @@
+#print range of fields from somefield to NF, I used 2 as my start
+awk '{for(x=2;x<=NF;x++)printf $x" ";print" "}' gitz|egrep -v 'curl|history|help'
