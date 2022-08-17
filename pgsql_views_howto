@@ -76,3 +76,17 @@ DROP VIEW
 hercules=> \dv
 Did not find any relations.
 
+#without view
+hercules=> select install_id,environment,oracle_home,host_environment_id,name from orcl_install,dlpx_host_environment where install_id=host_environment_id;
+-[ RECORD 1 ]-------+-------------------------------------------
+install_id          | 4
+environment         | UNIX_HOST_ENVIRONMENT-4
+oracle_home         | /u01/app/oracle/product/19.11.0.0/dbhome_1
+host_environment_id | 4
+name                | kgrh79ora1911src
+-[ RECORD 2 ]-------+-------------------------------------------
+install_id          | 3
+environment         | UNIX_HOST_ENVIRONMENT-3
+oracle_home         | /u01/app/oracle/product/19.11.0.0/dbhome_1
+host_environment_id | 3
+name                | kgrh79ora1911tgt
