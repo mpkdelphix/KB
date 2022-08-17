@@ -1,0 +1,7 @@
+hercules=> select name,toolkit_directory from dlpx_host;
+-[ RECORD 1 ]-----+-----------------------------------
+name              | kgrh79ora1911src.dcol2.delphix.com
+toolkit_directory | /var/tmp
+-[ RECORD 2 ]-----+-----------------------------------
+name              | kgrh79ora1911tgt.dcol2.delphix.com
+toolkit_directory | /var/tmp/mytoolkitdir
