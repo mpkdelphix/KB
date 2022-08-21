@@ -1,3 +1,10 @@
+#PREAMBLE - installing Git
+0. https://git-scm.com/download/mac
+1. Validate install -> open Terminal type "git"
+
+#Install Visual Studio Code
+https://code.visualstudio.com/download
+0. once it's installed open it, hover over icons, click on Extensions and install "Vim" for vi functionality when using Visual Studio Code.
 #GIT setup HOWTO
 0. login to github in your browser, create a repo called "KB"
 1.clone the git repo from your gitbash cli:
