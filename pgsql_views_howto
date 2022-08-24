@@ -1,3 +1,4 @@
+#my view doesn't work, it's not a one-to-one mapping of orcl install_id to dlpx_host_environment_id......
 #find vdb and orcl_install_id
 
 hercules=> select repository,database_name from orcl_db_config;
