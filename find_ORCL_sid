@@ -1,0 +1,13 @@
+0. set variable within your .bashrc:
+[oracle@mkrh74ora19tgt ~]$ grep SID .bashrc
+#export ORACLE_SID
+export ORACLE_SID=VDBOMSR0296NF0
+
+1. query database itself for ORACLE_SID:
+SQL> select name from v$database;
+
+NAME
+---------
+VDBO_NF0
+
+Reference: https://asktom.oracle.com/pls/apex/asktom.search?tag=what-is-a-sid-how-to-change-it-how-to-find-out-what-it-is
