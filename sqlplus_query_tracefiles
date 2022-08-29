@@ -1,0 +1,13 @@
+SQL> SELECT VALUE FROM V$DIAG_INFO WHERE NAME = 'Default Trace File';
+
+VALUE
+--------------------------------------------------------------------------------
+/u01/app/oracle/diag/rdbms/vdbomsr0296ba_nf0/VDBOMSR0296NF0/trace/VDBOMSR0296NF0
+_ora_29956.trc
+
+
+SQL> SELECT VALUE FROM V$DIAG_INFO WHERE NAME = 'Diag Trace';
+
+VALUE
+--------------------------------------------------------------------------------
+/u01/app/oracle/diag/rdbms/vdbomsr0296ba_nf0/VDBOMSR0296NF0/trace
