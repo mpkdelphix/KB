@@ -1,0 +1,13 @@
+
+SQL> select * from v$controlfile;
+
+STATUS
+-------
+NAME
+--------------------------------------------------------------------------------
+IS_ BLOCK_SIZE FILE_SIZE_BLKS     CON_ID
+--- ---------- -------------- ----------
+
+/mnt/provision/VDBOMSR0296BA_NF0/datafile/u01/app/oracle/oradata/DBOMSR0296BA/co
+ntrolfile/o1_mf_gftbopoh_.ctl
+NO       16384            710          0
