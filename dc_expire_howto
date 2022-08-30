@@ -1,0 +1,14 @@
+#here is how to renew your lab kit, for example my 6.0.15 Delphix engine on dcol2:
+Hello, you have VMs expiring on dcol2.delphix.com, please take a look at the following list of VMs. If you need any of them, please log into dcenter and extend their expiration time with dc expire <days> <VMNAME>
+
+Expiring in one day:
+mk60150
+------------------------------
+
+mike.kennedy@dcol2:~$ dc expire 30 mk60150
+'mk60150': setting expiration in 30.0 days...
+mike.kennedy@dcol2:~$ dcl
+NAME           ESX_HOST     EXPIRES
+mk60150        dcol2-esxi01 Thu Sep 29 07:47 (29d 23h)
+mkrh74ora19src dcol2-esxi08 Fri Sep 23 18:44 (24d 10h)
+mkrh74ora19tgt dcol2-esxi05 Sat Sep 24 14:49 (25d 7h)
