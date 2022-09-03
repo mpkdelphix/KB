@@ -1,0 +1,23 @@
+[oracle@mkrh74ora19tgt connector]$ awk '/public/ {print FILENAME"-"NR": "}' *
+debug.log.1-49129:
+debug.log.1-49130:
+debug.log.1-49131:
+debug.log.1-49208:
+debug.log.1-49295:
+debug.log.1-49296:
+debug.log.1-49300:
+debug.log.1-49301:
+debug.log.1-49420:
+debug.log.4-176698:
+debug.log.4-176699:
+debug.log.4-176700:
+debug.log.4-176777:
+debug.log.4-176864:
+debug.log.4-176865:
+debug.log.4-176869:
+debug.log.4-176870:
+debug.log.4-176989:
+
+#searching for public as in the /public dir mounted from the Appliance in mount_vdb
+
+27687:[2022-08-29T12:32:09,659][DEBUG][com.delphix.appliance.common.commands.ShellCommand][pool-8-thread-3][ShellCommand$StreamCollector.call] + /work/toolkit/Delphix_COMMON_c7b3d2b8ca6a_a9919155e5df_8_host/scripts/bash/linux_x86/bin64/bash -x /work/toolkit/Delphix_COMMON_c7b3d2b8ca6a_a9919155e5df_8_host/scripts/provision/oracle/common/validate_provision_reqs /work/toolkit/Delphix_COMMON_c7b3d2b8ca6a_a9919155e5df_8_host /mnt/provision VDBOMSR0296BA_NF0 10.43.35.196 /public ''\'''\''' _NOT_PDB_ true 3 1000 VDBOMSR0296BA_NF0_5529148307418952049_VALIDATE
