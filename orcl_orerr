@@ -1,0 +1,7 @@
+[oracle@kgrh79ora1911tgt ~]$ oerr ora 15001
+15001, 00000, "diskgroup \"%s\" does not exist or is not mounted"
+// *Cause:  An operation failed because the diskgroup specified does not
+//          exist or is not mounted by the current ASM instance.
+// *Action: Verify that the diskgroup name used is valid, that the
+//          diskgroup exists, and that the diskgroup is mounted by
+//          the current ASM instance
