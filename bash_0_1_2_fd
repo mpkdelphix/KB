@@ -1,0 +1,14 @@
+0 - stdin
+1 - stdout
+2 - stderr
+------------------------EXAMPLE-------------------------------
+[oracle@rhel-7 connector]$ vi err.sh
+[oracle@rhel-7 connector]$ chmod +x err.sh
+[oracle@rhel-7 connector]$ ./err.sh
+cat: miscrit_info.txt: No such file or directory
+[oracle@rhel-7 connector]$ ./err.sh 1>stdout 2>stderr
+[oracle@rhel-7 connector]$ ls
+debug.log  error.log  err.sh  info.log  stderr  stderr.log  stdout  stdout.log  trace.log
+[oracle@rhel-7 connector]$ cat stdout
+[oracle@rhel-7 connector]$ cat stderr
+cat: miscrit_info.txt: No such file or directory

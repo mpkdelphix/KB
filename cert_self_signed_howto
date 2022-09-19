@@ -1,1 +1,48 @@
 https://docs.delphix.com/docs6013/security/product-security/certificate-management/configuring-network-security-settings/regenerating-self-signed-end-entity-and-ca-certificates
+
+
+https://delphix.zendesk.com/agent/tickets/76789
+
+https://delphix.zendesk.com/agent/tickets/76455
+
+
+### CAVEAT FROM SANDRO ####
+
+Adding that we should raise a doc bug and have some clear instructions for Windows as well instead of having those bullet points at the end of the page.
+ 
+Also, I have tested the procedure and it does not work for me on Windows.
+ 
+Step 4 returns:
+ 
+PS C:\Program Files\Delphix\DelphixConnector\jre\bin>  .\keytool -certreq -alias tomcat -keyalg RSA -sigalg SHA256withRSA -storetype pkcs12 -keypass:env PASSWORD_ENV -storepass:env PASSWORD_ENV -keystore keystore |  .\keytool -gencert -alias delphixca -ext 'san=dns:delphix-test' -validity 397 -sigalg SHA256withRSA -storetype pkcs12 -storepass:env PASSWORD_ENV -keystore keystore -startdate -10080M |  .\keytool -importcert -alias tomcat -storetype pkcs12 -storepass:env PASSWORD_ENV -keystore keystore
+keytool error: java.security.cert.CertificateParsingException: signed overrun, bytes = 29
+ 
+It seems that the issue has been noticed in case #76455 but a documentation bug has not been filed.
+There is something wrong about using the pipes in powershell which seems to add some overhead to the certificate's output, as the same steps work on Linux (Delphix engine).
+ 
+The above command needs to be split and output saved in two files (.csr and .p12) as outlined below for the tomcat certificate:
+ 
+.\keytool -certreq -alias tomcat -keyalg RSA -sigalg SHA256withRSA -storetype pkcs12 -keypass:env PASSWORD_ENV -storepass:env PASSWORD_ENV -keystore keystore -file tomcat.csr
+ 
+.\keytool -gencert -alias delphixca -ext 'san=dns:delphix-test' -validity 397 -sigalg SHA256withRSA -storetype pkcs12 -storepass:env PASSWORD_ENV -keystore keystore -startdate -10080M -infile tomcat.csr -outfile tomcat.p12
+ 
+.\keytool -importcert -alias tomcat -storetype pkcs12 -storepass:env PASSWORD_ENV -keystore keystore -file tomcat.p12
+ 
+DSP:
+ 
+.\keytool -certreq -alias dsp -keyalg RSA -sigalg SHA256withRSA -storetype pkcs12 -keypass:env PASSWORD_ENV -storepass:env PASSWORD_ENV -keystore keystore -file dsp.csr
+.\keytool -gencert -alias delphixca -ext 'san=dns:delphix-test' -validity 397 -sigalg SHA256withRSA -storetype pkcs12 -storepass:env PASSWORD_ENV -keystore keystore -startdate -10080M -infile dsp.csr -outfile dsp.p12
+.\keytool -importcert -alias dsp -storetype pkcs12 -storepass:env PASSWORD_ENV -keystore keystore -file dsp.p12
+ 
+Delete temp files:
+ 
+del tomcat.*
+del dsp.*
+ 
+Please ping me if anything is unclear.
+Next step for the customer:
+ 
+Split the 4th command as shown above and add the last part of the command that is missing. For example, the first part just misses "-file tomcat.csr", the second "-infile tomcat.csr -outfile tomcat.p12" and the third "-file tomcat.p12".
+Repeat for 5th command by exchanging tomcat with dsp.
+
+---------------------------------------------------------------
