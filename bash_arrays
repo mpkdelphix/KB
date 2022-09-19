@@ -1,0 +1,21 @@
+[oracle@mkpdbsrc tmp]$ echo ${dias[@]}
+lunes martes miercoles jueves viernes sabado luni
+[oracle@mkpdbsrc tmp]$ dias[7]=marti
+[oracle@mkpdbsrc tmp]$ dias[8]=miercuri
+[oracle@mkpdbsrc tmp]$ dias[9]=joi
+[oracle@mkpdbsrc tmp]$ dias[10]=vinen
+[oracle@mkpdbsrc tmp]$ dias[11]=Sambata
+[oracle@mkpdbsrc tmp]$ dias[12]=Duminica
+[oracle@mkpdbsrc tmp]$ dias[13]=lunedi
+[oracle@mkpdbsrc tmp]$ dias[14]=martedi
+[oracle@mkpdbsrc tmp]$ dias[15]=mercoledi
+[oracle@mkpdbsrc tmp]$ dias[16]=giovedi
+[oracle@mkpdbsrc tmp]$ dias[17]=venerdi
+[oracle@mkpdbsrc tmp]$ dias[18]=sabato
+[oracle@mkpdbsrc tmp]$ dias[19]=domenica
+[oracle@mkpdbsrc tmp]$ echo ${#dias}
+5
+[oracle@mkpdbsrc tmp]$ echo ${dias[@]}
+lunes martes miercoles jueves viernes sabado luni marti miercuri joi vinen Sambata Duminica lunedi martedi mercoledi giovedi venerdi sabato domenica
+[oracle@mkpdbsrc tmp]$ echo ${dias[@]}
+lunes martes miercoles jueves viernes sabado luni marti miercuri joi vinen Sambata Duminica lunedi martedi mercoledi giovedi venerdi sabato domenica domingo
