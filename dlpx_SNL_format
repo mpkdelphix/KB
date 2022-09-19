@@ -1,0 +1,5 @@
+The SNL (SNapLink) is what the Delphix software will use to generate a new RMAN backup instance.
+
+The SNL has the following format: 
+
+SNL.<domain id>.<db id>.<random string>
