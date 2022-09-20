@@ -1,0 +1,5 @@
+[2022-09-20T05:30:55,069][INFO][oracle.snapsync.source.impl.SnapSyncProgress#updateProgress:313][Worker-348|JOB-190|DB_SYNC(ORACLE_DB_CONTAINER-39)][]->SNL.1.39.NZpDP6QcY4NsPAWjUu8foUh:
+[2022-09-20T05:30:55,073][INFO][oracle.snapsync.source.impl.SnapSyncJob#setupSnapshot:855][Worker-348|JOB-190|DB_SYNC(ORACLE_DB_CONTAINER-39)][]->SNL.1.39.NZpDP6QcY4NsPAWjUu8foUh:
+[2022-09-20T05:30:55,142][INFO][oracle.container.OracleDBContainerManagerImpl#lambda$createLDBSnapshot$13:954][Worker-348|JOB-190|DB_SYNC(ORACLE_DB_CONTAINER-39)][]->SNL.1.39.NZpDP6QcY4NsPAWjUu8foUh:
+[2022-09-20T05:30:57,214][INFO][oracle.snapsync.source.impl.SnapSyncJob#createSnapshot:842][Worker-348|JOB-190|DB_SYNC(ORACLE_DB_CONTAINER-39)][]->SNL.1.39.NZpDP6QcY4NsPAWjUu8foUh:
+delphix@mk60150:/var/delphix/server/log$ awk '/SNL/ {print $1"->"$2}' debug.log.1
