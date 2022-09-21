@@ -1,0 +1,3 @@
+find zombified processes:
+
+pidof -z
