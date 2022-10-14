@@ -1,0 +1,5 @@
+appliance management:
+sudo su - sysadmin@SYSTEM
+
+object management:
+sudo su - admin@DOMAIN
