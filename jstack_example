@@ -1,0 +1,1 @@
+/work/Delphix_COMMON_564d8f2c_a863_3ee5_6144_5fed34066879_oracle_host/java/jdk/bin/jstack -F 16846 > /tmp/12345/jstack.16846.out
