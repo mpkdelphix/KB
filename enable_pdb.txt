@@ -1,0 +1,1 @@
+* Enabling the PDB will start our environment monitor and this then detects the CDB 's associated and then it starts the Inactive CDB's.

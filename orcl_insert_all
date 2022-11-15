@@ -1,0 +1,16 @@
+#multi-rows insert no loop
+
+SQL> INSERT ALL
+  2    into razed (village_name, year_razed) values ('Volantis', 847)
+  3    into razed (village_name, year_razed) values ('Volantis', 847)
+  4    into razed (village_name, year_razed) values ('Volantis', 847)
+  5    into razed (village_name, year_razed) values ('Volantis', 847)
+  6    into razed (village_name, year_razed) values ('Volantis', 847)
+  7    into razed (village_name, year_razed) values ('Volantis', 847)
+  8    into razed (village_name, year_razed) values ('Volantis', 847)
+  9    into razed (village_name, year_razed) values ('Volantis', 847)
+ 10    into razed (village_name, year_razed) values ('Volantis', 847)
+ 11    into razed (village_name, year_razed) values ('Volantis', 847)
+ 12    into razed (village_name, year_razed) values ('Volantis', 847)
+ 13    into razed (village_name, year_razed) values ('Volantis', 847)
+ 14  SELECT * FROM dual
