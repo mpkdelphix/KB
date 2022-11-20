@@ -1,0 +1,5 @@
+1: Get the PID of the connector process with ps -ef | grep Delphix | grep client
+2: pstack <pid>
+3: gcore -o /var/tmp/client.core <pid>
+4: collect a support logs
+5: tar up the connector logs from: /opt/delphix/toolkit/Delphix_07ebbeea7355_*_2_host/log/connector
