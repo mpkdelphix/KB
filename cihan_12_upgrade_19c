@@ -1,0 +1,45 @@
+#!/bin/sh
+export DELPHIX_PDB_NAME=12DBTO19
+export ORACLE_HOME19=/u01/app/oracle/product/19.14.0.0/dbhome_1
+export ORACLE_HOME12=/u01/app/oracle/product/12.1.0.2/dbhome_1
+export ORACLE_SID=$DELPHIX_PDB_NAME
+export SCRIPT_DIR=/work/toolkit
+export UPGRADE_LOGDIR=$SCRIPT_DIR/$DELPHIX_PDB_NAME-upgrade
+export UPGRADE_LOGFILE=$UPGRADE_LOGDIR/$DELPHIX_PDB_NAME-upgrade.log
+mkdir $UPGRADE_LOGDIR
+$ORACLE_HOME19/jdk/jre/bin/java -jar /u01/app/oracle/product/19.14.0.0/dbhome_1/rdbms/admin/preupgrade.jar
+ cp /u01/app/oracle/cfgtoollogs/$ORACLE_SID/preupgrade/preupgrade.log $UPGRADE_LOGDIR
+ cp /u01/app/oracle/cfgtoollogs/$ORACLE_SID/preupgrade/preupgrade_fixups.sql $UPGRADE_LOGDIR
+ cp /u01/app/oracle/cfgtoollogs/$ORACLE_SID/preupgrade/postupgrade_fixups.sql $UPGRADE_LOGDIR
+sqlplus “/ AS SYSDBA” <<-EOF
+  whenever sqlerror exit 2;
+  spool $UPGRADE_LOGDIR/preupgrade_fixups.log
+  PURGE DBA_RECYCLEBIN ;
+  EXEC DBMS_STATS.GATHER_DICTIONARY_STATS;
+  @$UPGRADE_LOGDIR/preupgrade_fixups.sql
+  shu immediate
+  exit;
+EOF
+cp $ORACLE_HOME12/dbs/init$ORACLE_SID.ora $ORACLE_HOME19/dbs/
+export ORACLE_HOME=/u01/app/oracle/product/19.14.0.0/dbhome_1
+export PATH=$ORACLE_HOME/bin:$PATH
+export ORACLE_SID=12DBTO19
+sqlplus “/ AS SYSDBA” <<-EOF
+  whenever sqlerror exit 2;
+  spool $UPGRADE_LOGFILE
+  startup upgrade
+  set linesize 200
+  SELECT NAME,OPEN_MODE,STATUS,VERSION FROM V\$DATABASE, V\$INSTANCE;
+  exit;
+EOF
+cd $ORACLE_HOME19/rdbms/admin
+$ORACLE_HOME19/perl/bin/perl catctl.pl catupgrd.sql &>> $UPGRADE_LOGFILE
+sqlplus “/ AS SYSDBA” <<-EOF
+  whenever sqlerror exit 2;
+  spool $UPGRADE_LOGDIR/$DELPHIX_PDB_NAME-status
+  startup force
+  set linesize 200
+  SELECT NAME,OPEN_MODE,STATUS,VERSION FROM V\$DATABASE, V\$INSTANCE;
+  exit;
+EOF
+cp /u01/app/oracle/product/19.14.0.0/dbhome_1/cfgtoollogs/$ORACLE_SID/upgrade20221126085041/*.log $UPGRADE_LOGDIR
