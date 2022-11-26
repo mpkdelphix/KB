@@ -1,1 +1,2 @@
 tail -f /var/delphix/server/log/debug.log | grep -v -e "DSP session on host UNIX_HOST-" -e "Lock acquisition time" -e "ORACLE_LINKED_SOURCE-" -e "ORACLE_DB_CONTAINER"
+---------------------------
