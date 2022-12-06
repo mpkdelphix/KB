@@ -1,0 +1,121 @@
+SQL> create table gol
+  2  (gol_id NUMBER(3),
+  3  desc VARCHAR2(50),
+  4  eta VARCHAR2(50),
+  5  created_on DATE DEFAULT SYSDATE);
+desc VARCHAR2(50),
+*
+ERROR at line 3:
+ORA-00904: : invalid identifier
+
+
+SQL> create table gol(
+  2  gol_id not null number(3),
+  3  description varchar2(30),
+  4  eta varchar2(30)
+  5  );
+gol_id not null number(3),
+                *
+ERROR at line 2:
+ORA-00907: missing right parenthesis
+
+
+SQL> create table gol(
+  2  gol_id number(3),
+  3  description varchar2(30),
+  4  eta varchar2(30)
+  5  );
+
+Table created.
+
+SQL> desc gol
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ GOL_ID                                             NUMBER(3)
+ DESCRIPTION                                        VARCHAR2(30)
+ ETA                                                VARCHAR2(30)
+
+SQL> insert into gol(gol_id,description,eta) VALUES(1,"learn 8675309-Jenny","ASAP!");
+insert into gol(gol_id,description,eta) VALUES(1,"learn 8675309-Jenny","ASAP!")
+                                                                       *
+ERROR at line 1:
+ORA-00984: column not allowed here
+
+
+SQL> insert into gol
+  2  values (1,"learn 8675309-Jenny","right fkn now!");
+values (1,"learn 8675309-Jenny","right fkn now!")
+                                *
+ERROR at line 2:
+ORA-00984: column not allowed here
+
+
+SQL> insert into gol values (1, 'derp', 'ummm');
+
+1 row created.
+
+SQL> insert into gol
+  2  values (2, 'learn 8675309-Jenny','ASAP!!!!!');
+
+1 row created.
+
+SQL> select description,eta gol;
+select description,eta gol
+                         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select description,eta gol;
+select description,eta gol
+                         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> desc gol
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ GOL_ID                                             NUMBER(3)
+ DESCRIPTION                                        VARCHAR2(30)
+ ETA                                                VARCHAR2(30)
+
+SQL> select DESCRIPTION,ETA gol;
+select DESCRIPTION,ETA gol
+                         *
+ERROR at line 1:
+ORA-00923: FROM keyword not found where expected
+
+
+SQL> select description,eta from gol;
+
+DESCRIPTION                    ETA
+------------------------------ ------------------------------
+derp                           ummm
+learn 8675309-Jenny            ASAP!!!!!
+
+SQL> insert into gol
+  2  values(2,'get it 2gether!!!','right fkn now');
+
+1 row created.
+
+SQL> select description,eta from gol;
+
+DESCRIPTION                    ETA
+------------------------------ ------------------------------
+derp                           ummm
+learn 8675309-Jenny            ASAP!!!!!
+get it 2gether!!!              right fkn now
+
+SQL> insert into gol values(3,'become a Delphix yellow belt','soon...');
+
+1 row created.
+
+SQL> select * from gol;
+
+    GOL_ID DESCRIPTION                    ETA
+---------- ------------------------------ ------------------------------
+         1 derp                           ummm
+         2 learn 8675309-Jenny            ASAP!!!!!
+         2 get it 2gether!!!              right fkn now
+         3 become a Delphix yellow belt   soon...
