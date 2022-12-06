@@ -1,0 +1,11 @@
+mike.kennedy@dcol2:~$ ssh delphix@mk60160.dcol2
+Password:
+delphix@mk60160:~$ su - sysadmin@SYSTEM
+Password:
+mk60160.dcol2> /registration/regenerate
+mk60160.dcol2 registration regenerate *> commit
+    type: RegistrationInfo
+    code: Ni4w*B2i3KgaieKPhpfWAI8Dq1eyldg7z/qSyfTzFd+U3t8baYJolluqd+s+7JSvwGbLQUXrpAPeoTvtS4oAP0Dstcx6Nrs7rSaQ2N00+MlV/PAjFaLNB05MG7VflOUKWtMujmH/sJJDHw9xzYSJpXz8tvhekW4DYe+n+hp9cSAzhqWrGJmSyrQmmtR5kEjutejjKv7ItF0xE9K5P6zrQ2WsT0iAcMGceuiJz8um7DRxOsrMxqYR7xx4OfHbZ63e6POu2hLaoDNjpWJZmS9P695u6jezbGr2+1aG1VyIaUYiV7wnJxcGujrpsYNsbLeL80tcvn2nc11n8zxsCV8AYzeUG3OV20UbFybtkF91s8vD0rtnA5KTiT9qdozIY8wu6pCzE3mEn6SyusQlUWA0r+Y6iKlxOo/ls7t6BKjHxrTdxTBarJHSzXhOOcH6zUlT1Kq+u+TK/95CcaJWpFdLykCkKdVLe9IXKVe2pXxARTjccgXbyJ9iO18t4LQCrT99rKZ8F14KtuDl+w2l6xMunKEGmvrJWaYjNVDxcQyHIElGc3bCccYMGeT2cowUKyQubA7xrNCA1XPj8DJFOK34jN0+byEmfJBK/vyTEQXneEzcei/gRT9z4Sv+Lwq9a5NpSOcS3tPzzahkHUhrZtnIMmRzmngDVVwqVSJ/V2/OH6e8a2/U=|564d833a-64a7-d9ff-0256-c23ff1d1a570
+    registrationPortalHostname: https://register.delphix.com
+    uuid: 564d833a-64a7-d9ff-0256-c23ff1d1a570
+mk60160.dcol2>
