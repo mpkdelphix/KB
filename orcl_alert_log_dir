@@ -1,1 +1,6 @@
 /u01/app/oracle/diag/rdbms/vdbomsr0296ba_nf0/VDBOMSR0296NF0/trace
+
+
+#https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/database-administrators-guide.pdf
+select * from v$diag_info:
+/u01/app/oracle/diag/rdbms/cdomshtgc508/CDOMSHTGC508/alert
