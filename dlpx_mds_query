@@ -1,0 +1,12 @@
+#neat
+
+hercules=> select '["MSSQL_SNAPSHOT-'||snapshot_id||'"]' as owner from dlpx_snapshot where timeflow='MSSQL_TIMEFLOW-10162';
+           owner
+---------------------------
+ ["MSSQL_SNAPSHOT-104894"]
+ ["MSSQL_SNAPSHOT-104751"]
+ ["MSSQL_SNAPSHOT-105247"]
+ ["MSSQL_SNAPSHOT-105796"]
+ ["MSSQL_SNAPSHOT-105025"]
+ ["MSSQL_SNAPSHOT-105510"]
+ ["MSSQL_SNAPSHOT-106083"]

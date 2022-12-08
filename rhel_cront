@@ -1,0 +1,26 @@
+#customer cron job is supposed to run everyday
+Policy Schedule:
+        Schedule Cron Str    Schedule Cut Off Time
+        0 30 3 ? * 1         14400 runs at 3:30AM every month on lunes
+        0 30 3 ? * 2         14400
+        0 30 3 ? * 3         14400
+        0 30 3 ? * 4         14400
+        0 30 3 ? * 5         14400
+        0 30 3 ? * 6         14400
+        0 30 3 ? * 7         14400
+
+        min hour dayofmonth dayofweek
+
+        #example
+        #Ansible: oracle cleanup
+0,30 * * * * /root/oracle_cleanup_cronjob.sh &>/dev/null
+
+
+# Example of job definition:
+# .---------------- minute (0 - 59)
+# |  .------------- hour (0 - 23)
+# |  |  .---------- day of month (1 - 31)
+# |  |  |  .------- month (1 - 12) OR jan,feb,mar,apr ...
+# |  |  |  |  .---- day of week (0 - 6) (Sunday=0 or 7) OR sun,mon,tue,wed,thu,fri,sat
+# |  |  |  |  |
+# *  *  *  *  * user-name  command to be executed

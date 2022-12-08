@@ -6,6 +6,8 @@ select * from v$diag_info:
 /u01/app/oracle/diag/rdbms/cdomshtgc508/CDOMSHTGC508/alert
 
 
+#Delphix internal kba:
+https://support.delphix.com/Continuous_Data_Engine_(formerly_Virtualization_Engine)/Oracle/Collecting_Diagnostics_from_Oracle_Hosts_for_Delphix_Support_Cases_(KBA1763)
 #from labkit:
 [oracle@mkrh123tgt trace]$ pwd
 /u01/app/oracle/diag/rdbms/vdbomsr91f858_llz/VDBOMSR91F8LLZ/trace
