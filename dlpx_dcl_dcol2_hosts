@@ -1,0 +1,20 @@
+mike.kennedy@dcol2:~$ dcl -o name,source_group,used,exipres
+usage: dc list [-h] [-a | -g GROUP] [-s <prop,...>] [-o <props>] [-H] ...
+dc list: error: 'exipres' is not a valid property, choose one of: name, created, user, esx_host, registered_since, group, source_group, expires, vnc_port, tty_port, mac, ip, ips, hostname, hostnames, used, vips, automation_id, cluster_name, content_type, version@, mac@, ip@, hostname@
+mike.kennedy@dcol2:~$ dcl -o name,source_group,used,expires
+NAME          SOURCE_GROUP                 USED  EXPIRES
+mk60160       dlpx-6.0.16.0                17.4G Tue Jan 17 16:29 (22d 22h)
+mkrhora213src rhel-8.3-oracle-21.3.0.0-src 1.24G Wed Jan 18 18:56 (24d 1h)
+mkrhora213tgt rhel-8.3-oracle-21.3.0.0-tgt 1.26G Wed Jan 18 18:57 (24d 1h)
+mkwinsrc2019  win2019src-qaad              1.55G Wed Jan 18 22:46 (24d 4h)
+mkwintgt2019  win2019tgt-qaad              1.62G Wed Jan 18 22:46 (24d 4h)
+mike.kennedy@dcol2:~$ vi .bashrc
+mike.kennedy@dcol2:~$ . ./.bashrc
+mike.kennedy@dcol2:~$ dcl
+NAME          SOURCE_GROUP                 USED  EXPIRES
+mk60160       dlpx-6.0.16.0                17.4G Tue Jan 17 16:29 (22d 22h)
+mkrhora213src rhel-8.3-oracle-21.3.0.0-src 1.24G Wed Jan 18 18:56 (24d 1h)
+mkrhora213tgt rhel-8.3-oracle-21.3.0.0-tgt 1.26G Wed Jan 18 18:57 (24d 1h)
+mkwinsrc2019  win2019src-qaad              1.55G Wed Jan 18 22:46 (24d 4h)
+mkwintgt2019  win2019tgt-qaad              1.62G Wed Jan 18 22:46 (24d 4h)
+mike.kennedy@dcol2:~$

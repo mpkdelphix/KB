@@ -1,0 +1,161 @@
+#Chadumentation: https://delphix.atlassian.net/wiki/spaces/BK/pages/17805836402/Chad+Useful+Examples
+#startup & useful commands: https://delphix.atlassian.net/wiki/spaces/BK/pages/1161954411/CHAD#CHAD-starting_chad
+
+
+#first example https://delphix.zendesk.com/agent/tickets/78681
+JOB-63611 > JOB
+
+Job Summary :
+        FAILED  (14days)  : 23
+        RUNNING (All)     : 1
+
+Most Recent Failed:
+    Object ID    Target Reference        Target Name                                                               Job Type                                          Job State    Title                                                                             Start Time               Duration    Action
+    JOB-72058    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  DB_REFRESH                                        FAILED       Refresh database "VDSXV0_COLLINE_UAT3@SE120156".                                  2022-12-06 10:44:16 UTC  3m 55s      ACTION-403913
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72057    JS_DATA_SOURCE-126      VDbd8e1c8a-d39c-48e1-b8db-a5a022312d9e_COLLINE_Parent_Stage@SE120156 DS   SELFSERVICE_USER_CONTAINER_ATTEMPT_UPDATE_SOURCE  FAILED       Attempt to update Self-Service data source "VDSXV0_COLLINE_Parent_Stage@SE120156  2022-12-06 10:44:16 UTC  3m 55s      ACTION-403912
+                                                                                                                                                                                     DS".
+    JOB-72055    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  DB_REFRESH                                        FAILED       Refresh database "VDSXV0_COLLINE_UAT3@SE120156".                                  2022-12-06 10:40:50 UTC  3m 26s      ACTION-403907
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72054    JS_DATA_SOURCE-126      VDbd8e1c8a-d39c-48e1-b8db-a5a022312d9e_COLLINE_Parent_Stage@SE120156 DS   SELFSERVICE_USER_CONTAINER_ATTEMPT_UPDATE_SOURCE  FAILED       Attempt to update Self-Service data source "VDSXV0_COLLINE_Parent_Stage@SE120156  2022-12-06 10:40:50 UTC  3m 26s      ACTION-403906
+                                                                                                                                                                                     DS".
+    JOB-72052    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  DB_REFRESH                                        FAILED       Refresh database "VDSXV0_COLLINE_UAT3@SE120156".                                  2022-12-06 10:36:26 UTC  4m 23s      ACTION-403904
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72051    JS_DATA_SOURCE-126      VDbd8e1c8a-d39c-48e1-b8db-a5a022312d9e_COLLINE_Parent_Stage@SE120156 DS   SELFSERVICE_USER_CONTAINER_ATTEMPT_UPDATE_SOURCE  FAILED       Attempt to update Self-Service data source "VDSXV0_COLLINE_Parent_Stage@SE120156  2022-12-06 10:36:26 UTC  4m 23s      ACTION-403903
+                                                                                                                                                                                     DS".
+    JOB-72050    JS_DATA_SOURCE-126      VDbd8e1c8a-d39c-48e1-b8db-a5a022312d9e_COLLINE_Parent_Stage@SE120156 DS   SELFSERVICE_USER_CONTAINER_UPDATE_SOURCE          FAILED       Update Self-Service data source "VDSXV0_COLLINE_Parent_Stage@SE120156 DS".        2022-12-06 10:36:26 UTC  11m 45s     ACTION-403902
+    JOB-72048    JS_DATA_CONTAINER-177   VDbd8e1c8a-d39c-48e1-b8db-a5a022312d9e_COLLINE_UAT3@SE120156 CDC          SELFSERVICE_USER_CONTAINER_REFRESH                FAILED       Refresh Self-Service data container "VDSXV0_COLLINE_UAT3@SE120156 CDC".           2022-12-06 10:35:38 UTC  12m 34s     ACTION-403900
+    JOB-72041    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  DB_REFRESH                                        FAILED       Refresh database "VDSXV0_COLLINE_UAT3@SE120156".                                  2022-12-06 09:31:51 UTC  3m 55s      ACTION-403887
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72040    JS_DATA_SOURCE-126      VDbd8e1c8a-d39c-48e1-b8db-a5a022312d9e_COLLINE_Parent_Stage@SE120156 DS   SELFSERVICE_USER_CONTAINER_ATTEMPT_UPDATE_SOURCE  FAILED       Attempt to update Self-Service data source "VDSXV0_COLLINE_Parent_Stage@SE120156  2022-12-06 09:31:50 UTC  3m 56s      ACTION-403886
+                                                                                                                                                                                     DS".
+
+Running:
+    Object ID    Target Reference    Target Name                           Job Type               Job State    Title                     Start Time               Duration    Action
+    JOB-72146    USER-79             5ffed3c5-aacd-4b04-a2d6-390f95133325  SUPPORT_BUNDLE_UPLOAD  RUNNING      Upload a support bundle.  2022-12-08 13:07:09 UTC  <1sec       ACTION-404394
+
+    #very ugly, let's find the container for the DB-REFRESH and list all failed jobs for that container
+    #reveals a long history of system resource and configuration problems
+    JOB > ls MSSQL_DB_CONTAINER-308 failed
+Job Target References : ['MSSQL_DB_CONTAINER-308']
+Job Types   : []
+Job States  : ['FAILED']
+Job Names   : []
+Actions     : []
+Query Date  : None
+Limit       : 50
+Job(s) :
+    Object ID    Target Reference        Target Name                                                               Job State    Job Type    Title                                                      Start Time               Duration    Action
+    JOB-72058    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  FAILED       DB_REFRESH  Refresh database "VDSXV0_COLLINE_UAT3@SE120156".           2022-12-06 10:44:16 UTC  3m 55s      ACTION-403913
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72055    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  FAILED       DB_REFRESH  Refresh database "VDSXV0_COLLINE_UAT3@SE120156".           2022-12-06 10:40:50 UTC  3m 26s      ACTION-403907
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72052    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  FAILED       DB_REFRESH  Refresh database "VDSXV0_COLLINE_UAT3@SE120156".           2022-12-06 10:36:26 UTC  4m 23s      ACTION-403904
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72041    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  FAILED       DB_REFRESH  Refresh database "VDSXV0_COLLINE_UAT3@SE120156".           2022-12-06 09:31:51 UTC  3m 55s      ACTION-403887
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72038    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  FAILED       DB_REFRESH  Refresh database "VDSXV0_COLLINE_UAT3@SE120156".           2022-12-06 09:27:45 UTC  4m 4s       ACTION-403884
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72035    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  FAILED       DB_REFRESH  Refresh database "VDSXV0_COLLINE_UAT3@SE120156".           2022-12-06 09:23:06 UTC  4m 39s      ACTION-403878
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-70587    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  FAILED       DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-10-28 23:00:00 UTC  44s         ACTION-394888
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-63611    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  FAILED       DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-04-19 23:00:00 UTC  54s         ACTION-348622
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+
+  # compare DB_SYNC times for MSSQL_DB_CONTAINER-308
+
+  JOB > compare MSSQL_DB_CONTAINER-308 DB_SYNC 10limit
+Job Target References : ['MSSQL_DB_CONTAINER-308']
+Job Types   : ['DB_SYNC']
+Job States  : []
+Job Names   : []
+Actions     : []
+Query Date  : None
+Limit       : 10
+Looking for job : JOB-72127 : DB_SYNC
+        Checking for JOB-72127 in file debug.log.5
+Looking for job : JOB-72098 : DB_SYNC
+        Checking for JOB-72098 in file debug.log.14
+Looking for job : JOB-72063 : DB_SYNC
+        Checking for JOB-72063 in file debug.log.19
+Looking for job : JOB-72049 : DB_SYNC
+        Checking for JOB-72049 in file debug.log.20
+Looking for job : JOB-72046 : DB_SYNC
+        Checking for JOB-72046 in file debug.log.20
+Looking for job : JOB-72032 : DB_SYNC
+        Checking for JOB-72032 in file debug.log.20
+Looking for job : JOB-72016 : DB_SYNC
+        Checking for JOB-72016 in file debug.log.24
+Looking for job : JOB-71937 : DB_SYNC
+        Checking for JOB-71937 in file info.log.20
+Looking for job : JOB-71911 : DB_SYNC
+        Checking for JOB-71911 in file info.log.24
+Looking for job : JOB-71873 : DB_SYNC
+        Checking for JOB-71873 in file info.log.27
+Job Data
+    Object ID    Target Reference        Target Name                                                               Job State    Job Type    Title                                                      Start Time               Duration    Action                  started         completed
+                                                                                                                                                                                                                                                             event_duration    event_duration
+    JOB-72127    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-08 00:00:00 UTC  5m 14s      ACTION-404243            5m 14s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72098    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-07 00:00:00 UTC  1m 29s      ACTION-404018            1m 29s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72063    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-06 10:50:34 UTC  49s         ACTION-403918               49s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72049    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-06 10:35:38 UTC  48s         ACTION-403901               48s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72046    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-06 09:38:10 UTC  47s         ACTION-403892               47s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72032    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-06 09:22:15 UTC  50s         ACTION-403875               50s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-72016    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-06 00:00:00 UTC  2m 4s       ACTION-403746             2m 4s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-71937    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-03 00:00:00 UTC  2m 17s      ACTION-403148            2m 17s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-71911    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-02 00:00:00 UTC  2m 22s      ACTION-402924            2m 22s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+    JOB-71873    MSSQL_DB_CONTAINER-308  bd8e1c8a-d39c-48e1-b8db-a5a022312d9e@SE120156/VDbd8e1c8a-d39c-48e1-b8db-  COMPLETED    DB_SYNC     Run SnapSync for database "VDSXV0_COLLINE_UAT3@SE120156".  2022-12-01 00:00:00 UTC  2m 28s      ACTION-402699            2m 28s             <1sec
+                                            a5a022312d9e_COLLINE_UAT3@SE120156
+#list snapshots limit 8
+MSSQL_DB_CONTAINER-308 > snapshot 8limit
+Snapshot(s)
+    Object ID            Container               Timeflow             Creation Time            Database Timezone    Version      Consistency
+    MSSQL_SNAPSHOT-6287  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-2879  2020-05-11 23:06:13 UTC  America/New_York     11.4.7001.0  CONSISTENT
+    MSSQL_SNAPSHOT-6940  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3401  2020-05-18 23:06:26 UTC  America/New_York     11.4.7001.0  CONSISTENT
+    MSSQL_SNAPSHOT-6983  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3401  2020-05-19 14:51:55 UTC  America/New_York     11.4.7001.0  CONSISTENT
+    MSSQL_SNAPSHOT-6996  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3480  2020-05-19 19:30:53 UTC  America/New_York     11.4.7001.0  CONSISTENT
+    MSSQL_SNAPSHOT-7110  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3480  2020-05-20 19:33:32 UTC  America/New_York     11.4.7001.0  CONSISTENT
+    MSSQL_SNAPSHOT-7469  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3480  2020-05-25 23:04:49 UTC  America/New_York     11.4.7001.0  CONSISTENT
+    MSSQL_SNAPSHOT-7577  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3548  2020-05-27 18:39:10 UTC  America/New_York     11.4.7001.0  CONSISTENT
+    MSSQL_SNAPSHOT-7750  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3573  2020-05-29 17:51:52 UTC  America/New_York     11.4.7001.0  CONSISTENT
+#list snapshots with some attributes:
+MSSQL_DB_CONTAINER-308 > snapshot =dlpx_id,container,timeflow,creation_time,runtime 8limit
+Snapshot(s)
+    Object ID            Container               Timeflow             Creation Time            PHONEHOME: Runtime Attr.
+    MSSQL_SNAPSHOT-6287  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-2879  2020-05-11 23:06:13 UTC  RUNTIME_MSSQL_SNAPSHOT-6287
+    MSSQL_SNAPSHOT-6940  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3401  2020-05-18 23:06:26 UTC  RUNTIME_MSSQL_SNAPSHOT-6940
+    MSSQL_SNAPSHOT-6983  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3401  2020-05-19 14:51:55 UTC  RUNTIME_MSSQL_SNAPSHOT-6983
+    MSSQL_SNAPSHOT-6996  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3480  2020-05-19 19:30:53 UTC  RUNTIME_MSSQL_SNAPSHOT-6996
+    MSSQL_SNAPSHOT-7110  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3480  2020-05-20 19:33:32 UTC  RUNTIME_MSSQL_SNAPSHOT-7110
+    MSSQL_SNAPSHOT-7469  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3480  2020-05-25 23:04:49 UTC  RUNTIME_MSSQL_SNAPSHOT-7469
+    MSSQL_SNAPSHOT-7577  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3548  2020-05-27 18:39:10 UTC  RUNTIME_MSSQL_SNAPSHOT-7577
+    MSSQL_SNAPSHOT-7750  MSSQL_DB_CONTAINER-308  MSSQL_TIMEFLOW-3573  2020-05-29 17:51:52 UTC  RUNTIME_MSSQL_SNAPSHOT-7750
+
+    #list filesystem associated with container
+    MSSQL_DB_CONTAINER-193 > MSSQL_DB_CONTAINER-193.filesystem
+    Filesystem                      domain0/group-177216/mssql_db_container-177332
+#spaceusage for timeflow
+MSSQL_TIMEFLOW-2822 > MSSQL_TIMEFLOW-2822.spaceusage
+MSSQL
+    Object               Name                              Filesystem                                                                                    Size
+    MSSQL_TIMEFLOW-2822  DB_PROVISION@2020-05-04T18:49:25  domain0/group-177216/mssql_db_container-177332/mssql_timeflow-177333                      70.90 MB
+                                                           domain0/group-177216/mssql_db_container-177332/mssql_timeflow-177333/archive   226.00 KB
+                                                           domain0/group-177216/mssql_db_container-177332/mssql_timeflow-177333/datafile   70.40 MB
+                                                           domain0/group-177216/mssql_db_container-177332/mssql_timeflow-177333/external    0.00  B
+                                                           domain0/group-177216/mssql_db_container-177332/mssql_timeflow-177333/temp      226.00 KB
+                                                           12 Total Snapshot(s)                                                             5.79 MB
+
+#timeflow name and provision timestamp
+MSSQL_TIMEFLOW-2822 > MSSQL_DB_CONTAINER-193.timeflow.name
+    Name                            DB_PROVISION@2020-05-04T18:49:25
+

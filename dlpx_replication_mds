@@ -1,0 +1,54 @@
+#learn to use MDS like the pros!
+#https://delphix.atlassian.net/browse/ESCL-4030
+
+#using my case:https://delphix.zendesk.com/agent/tickets/78663
+
+0. fire up chad , go to Replication:
+
+namespace           List all Namespaces
+search              Search specs/namespace by name
+spec                List all Replicaiton Specs
+
+Replication >
+
+
+1. no spec(not source)
+2. namespace:
+Replication > namespace
+Namespace(s) :
+    Object ID     Name                Tag                                   Description    Secure Namespace    Failed Over
+    NAMESPACE-35  sclfdlpxapprd01-34  16e49132-2fff-495f-bbee-cf047582a3f5                 False               False
+    NAMESPACE-37  sclfdlpxapprd01-36  4db8f2a9-a6e4-4dff-80c7-5ee41daace5b                 False               False
+    NAMESPACE-39  sclfdlpxapprd01-38  56556572-49a1-464b-b5db-1cd25832b296                 False               False
+
+Target State(s) :
+    Object ID                    Tag                                   Namespace     Secure Replication
+    REPLICATION_TARGET_STATE-17  16e49132-2fff-495f-bbee-cf047582a3f5  NAMESPACE-35  False
+    REPLICATION_TARGET_STATE-19  56556572-49a1-464b-b5db-1cd25832b296  NAMESPACE-39  False
+    REPLICATION_TARGET_STATE-18  4db8f2a9-a6e4-4dff-80c7-5ee41daace5b  NAMESPACE-37  False
+
+3. find a timeflow:
+
+ASE_TIMEFLOW-4269 > storage
+Storage Container :
+    * Object ID                     STORAGE_CONTAINER-25955
+    Container Id                    25955
+    Namespace                       Primary
+    Namespace Data Dependency
+    Source Filesystem
+    Owners                          ASE_TIMEFLOW-4269
+    Storage State                   IN_USE
+    Container Type                  FOLDER
+    Filesystem                      domain0/group-23/ase_db_container-395791/ase_timeflow-397318
+    Origin Snapshot
+    Lineage Uuids                   []
+    Redacted                        False
+    Storage Type                    ROOT
+    Replication Type                SERIALIZATION_SNAPSHOT
+    Async Write Type                False
+
+StorageContainer Extended Properties :
+    * ZFS Size                      2.34 GB
+
+
+4. 

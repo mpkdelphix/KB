@@ -1,0 +1,5 @@
+0. what are src and target engines
+1. what is the spec in question
+2. What is the namespace in question
+3. has a failover occurred? If so, the replicated objects are no longer in a namespace
+and are now native objects.

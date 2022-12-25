@@ -1,0 +1,7 @@
+#clone support bundle into VM
+
+#Confluence: https://delphix.atlassian.net/wiki/spaces/EH/pages/4401631706/Domain+Restore
+
+#Jenkins->login->http://selfservice.jenkins.delphix.com/job/mds-upgrader-unthrottled/->buid with parameters
+
+copy uuid into s3, select restore, preserve machine
