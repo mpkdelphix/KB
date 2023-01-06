@@ -1,0 +1,110 @@
+#following my Udemy course for RMAN #evolve2023
+
+[oracle@mkrhora213src ~]$ lsnrctl status
+
+LSNRCTL for Linux: Version 21.0.0.0.0 - Production on 03-JAN-2023 10:57:30
+
+Copyright (c) 1991, 2021, Oracle.  All rights reserved.
+
+Connecting to (ADDRESS=(PROTOCOL=tcp)(HOST=)(PORT=1521))
+STATUS of the LISTENER
+------------------------
+Alias                     LISTENER
+Version                   TNSLSNR for Linux: Version 21.0.0.0.0 - Production
+Start Date                19-DEC-2022 13:56:55
+Uptime                    14 days 21 hr. 0 min. 35 sec
+Trace Level               off
+Security                  ON: Local OS Authentication
+SNMP                      OFF
+Listener Log File         /u01/app/oracle/diag/tnslsnr/mkrhora213src/listener/alert/log.xml
+Listening Endpoints Summary...
+  (DESCRIPTION=(ADDRESS=(PROTOCOL=tcp)(HOST=mkrhora213src)(PORT=1521)))
+Services Summary...
+Service "CDOMLOSR8C22" has 1 instance(s).
+  Instance "CDOMLOSR8C22", status READY, has 1 handler(s) for this service...
+Service "CDOMLOSR8C22XDB" has 1 instance(s).
+  Instance "CDOMLOSR8C22", status READY, has 1 handler(s) for this service...
+Service "CDOMSHSRE256" has 1 instance(s).
+  Instance "CDOMSHSRE256", status READY, has 1 handler(s) for this service...
+Service "CDOMSHSRE256XDB" has 1 instance(s).
+  Instance "CDOMSHSRE256", status READY, has 1 handler(s) for this service...
+Service "cdomlosr8c22pdb1" has 1 instance(s).
+  Instance "CDOMLOSR8C22", status READY, has 1 handler(s) for this service...
+Service "cdomlosr8c22pdb2" has 1 instance(s).
+  Instance "CDOMLOSR8C22", status READY, has 1 handler(s) for this service...
+Service "cdomlosr8c22pdb3" has 1 instance(s).
+  Instance "CDOMLOSR8C22", status READY, has 1 handler(s) for this service...
+Service "cdomshsre256pdb1" has 1 instance(s).
+  Instance "CDOMSHSRE256", status READY, has 1 handler(s) for this service...
+Service "cdomshsre256pdb2" has 1 instance(s).
+  Instance "CDOMSHSRE256", status READY, has 1 handler(s) for this service...
+Service "cdomshsre256pdb3" has 1 instance(s).
+  Instance "CDOMSHSRE256", status READY, has 1 handler(s) for this service...
+Service "d621bf3f9a19dccee055000000000001" has 1 instance(s).
+  Instance "CDOMLOSR8C22", status READY, has 1 handler(s) for this service...
+Service "d621c0020c3addc9e055000000000001" has 1 instance(s).
+  Instance "CDOMLOSR8C22", status READY, has 1 handler(s) for this service...
+Service "d621c0cb9de9ddfce055000000000001" has 1 instance(s).
+  Instance "CDOMLOSR8C22", status READY, has 1 handler(s) for this service...
+Service "d621f1751aca06cfe055000000000001" has 1 instance(s).
+  Instance "CDOMSHSRE256", status READY, has 1 handler(s) for this service...
+Service "d621f253796007d5e055000000000001" has 1 instance(s).
+  Instance "CDOMSHSRE256", status READY, has 1 handler(s) for this service...
+Service "d621f373945c0814e055000000000001" has 1 instance(s).
+  Instance "CDOMSHSRE256", status READY, has 1 handler(s) for this service...
+The command completed successfully
+[oracle@mkrhora213src ~]$ rman
+
+Recovery Manager: Release 21.0.0.0.0 - Production on Tue Jan 3 10:57:43 2023
+Version 21.3.0.0.0
+
+Copyright (c) 1982, 2021, Oracle and/or its affiliates.  All rights reserved.
+
+RMAN> connect target /
+
+connected to target database: CDOMLOSR (DBID=3453967088)
+
+RMAN>
+
+RMAN> SHOW ALL;
+
+using target database control file instead of recovery catalog
+RMAN configuration parameters for database with db_unique_name CDOMLOSR8C22 are:
+CONFIGURE RETENTION POLICY TO REDUNDANCY 1; # default
+CONFIGURE BACKUP OPTIMIZATION OFF; # default
+CONFIGURE DEFAULT DEVICE TYPE TO DISK; # default
+CONFIGURE CONTROLFILE AUTOBACKUP OFF;
+CONFIGURE CONTROLFILE AUTOBACKUP FORMAT FOR DEVICE TYPE DISK TO '%F'; # default
+CONFIGURE DEVICE TYPE DISK PARALLELISM 1 BACKUP TYPE TO BACKUPSET; # default
+CONFIGURE DATAFILE BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default
+CONFIGURE ARCHIVELOG BACKUP COPIES FOR DEVICE TYPE DISK TO 1; # default
+CONFIGURE MAXSETSIZE TO UNLIMITED; # default
+CONFIGURE ENCRYPTION FOR DATABASE OFF; # default
+CONFIGURE ENCRYPTION ALGORITHM 'AES128'; # default
+CONFIGURE COMPRESSION ALGORITHM 'BASIC' AS OF RELEASE 'DEFAULT' OPTIMIZE FOR LOAD TRUE ; # default
+CONFIGURE RMAN OUTPUT TO KEEP FOR 7 DAYS; # default
+CONFIGURE ARCHIVELOG DELETION POLICY TO APPLIED ON ALL STANDBY;
+CONFIGURE SNAPSHOT CONTROLFILE NAME TO '/u01/app/oracle/product/21.3.0.0/dbhome_1/dbs/snapcf_CDOMLOSR8C22.f'; # default
+
+---------------------------------------------
+
+RMAN> SHOW RETENTION POLICY;
+
+RMAN configuration parameters for database with db_unique_name CDOMLOSR8C22 are:
+CONFIGURE RETENTION POLICY TO REDUNDANCY 1; # default
+
+---------------------------------------------
+RMAN> SHOW DEFAULT DEVICE TYPE;
+
+RMAN configuration parameters for database with db_unique_name CDOMLOSR8C22 are:
+CONFIGURE DEFAULT DEVICE TYPE TO DISK; # default
+----------------------------------------------
+SQL> show parameter recovery_file_dest;
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+db_recovery_file_dest                string      /u01/app/oracle/fast_recovery_
+                                                 area
+db_recovery_file_dest_size           big integer 17316M
+remote_recovery_file_dest            string
+SQL>

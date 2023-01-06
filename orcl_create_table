@@ -119,3 +119,61 @@ SQL> select * from gol;
          2 learn 8675309-Jenny            ASAP!!!!!
          2 get it 2gether!!!              right fkn now
          3 become a Delphix yellow belt   soon...
+##########################
+TDE example
+
+SQL> create tablespace krpyton_ts
+  2  DATAFILE '/u01/app/oracle/oradata/DBOMSRCD94D3/datafile/krypton_ts01.dbf' SIZE 128K AUTOEXTEND ON NEXT 64K
+  3  ENCRYPTION USING 'AES256'
+  4  DEFAULT STORAGE(ENCRYPT);
+
+Tablespace created.
+
+
+[oracle@mkrh79ora19tgt datafile]$ pwd; ls -l
+/u01/app/oracle/oradata/VDBOMSRCD94VNZ/datafile
+total 136
+-rw-r-----. 1 oracle oinstall 139264 Sep  6 16:36 krypton_ts01.dbf
+
+7. create encrypted table
+SQL> create table krypton_slogans(
+  2  id NUMBER(10),
+  3  slogan VARCHAR2(50))
+  4  TABLESPACE krypton_ts;
+
+Table created.
+
+8. create krypton_test index on slogan:
+SQL> create index krypton_index ON krypton_test(slogan) tablespace krypton_ts;
+
+Index created.
+
+9. insert data into table
+SQL> insert all
+  2  into krypton_slogans(id, slogan) VALUES (1, 'sup d00d? This is encrypted')
+  3  into krypton_slogans(id, slogan) VALUES (2, 'our planet is exploding..')
+  4  into krypton_slogans(id, slogan) VALUES (3, 'Ghosthookers ROCK')
+  5  select * from dual;
+
+3 rows created.
+
+SQL> select * from krypton_slogans;
+
+        ID SLOGAN
+---------- --------------------------------------------------
+         1 sup d00d? This is encrypted
+         2 our planet is exploding..
+         3 Ghosthookers ROCK
+
+
+10. display tablespace encrypted status:
+SQL> select tablespace_name,encrypted,status from dba_tablespaces;
+
+TABLESPACE_NAME                ENC STATUS
+------------------------------ --- ---------
+SYSTEM                         NO  ONLINE
+SYSAUX                         NO  ONLINE
+UNDOTBS1                       NO  ONLINE
+TEMP                           NO  ONLINE
+USERS                          NO  ONLINE
+KRYPTON_TS                     YES ONLINE

@@ -1,0 +1,61 @@
+#https://www.dba-oracle.com/t_oracle_display_controlfiles.htm
+
+SQL> col value format a41
+SQL> select
+  2  value
+  3  from v$parameter
+  4  where
+  5  name = 'control_files';
+
+VALUE
+-----------------------------------------
+/u01/app/oracle/oradata/CDOMLOSR8C22/cont
+rolfile/o1_mf_jypm60sv_.ctl, /u01/app/ora
+cle/fast_recovery_area/CDOMLOSR8C22/contr
+olfile/o1_mf_jypm60xz_.ctl
+----------------------------------------------
+[oracle@mkrhora213src controlfile]$ pwd
+/u01/app/oracle/oradata/CDOMLOSR8C22/controlfile
+[oracle@mkrhora213src controlfile]$ ls -l;file o1_mf_jypm60sv_.ctl
+total 18896
+-rw-r-----. 1 oracle oinstall 19349504 Jan  3 09:49 o1_mf_jypm60sv_.ctl
+o1_mf_jypm60sv_.ctl: data
+-----------------------------------------------
+SQL> show parameter control_file;
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+control_file_record_keep_time        integer     7
+control_files                        string      /u01/app/oracle/oradata/CDOMLO
+                                                 SR8C22/controlfile/o1_mf_jypm6
+                                                 0sv_.ctl, /u01/app/oracle/fast
+                                                 _recovery_area/CDOMLOSR8C22/co
+                                                 ntrolfile/o1_mf_jypm60xz_.ctl
+SQL> show parameter control_file_record_keep_time;
+
+NAME                                 TYPE        VALUE
+------------------------------------ ----------- ------------------------------
+control_file_record_keep_time        integer     7
+
+
+#running strings against ctl file shows RMAN entries
+
+RMAN
+SNL.1.1.WmQKx75NesJtI3ZewSTiAvMm
+backup PLUGGABLE DATABASE
+SNL.1.1.WmQKx75NesJtI3ZewSTiAvMm
+unavailable
+2022-12-23T09:30:42
+RMAN
+2022-12-23T09:30:46
+RMAN
+2022-12-23T09:30:47
+RMAN
+DLPX-LGS.1.116.a52acb12-0914-4fb
+backup
+2022-12-23T09:30:50
+RMAN
+SNL.1.2.p99zrN8yV8sSOiwsmaqUxvve
+backup PLUGGABLE DATABASE
+SNL.1.2.p99zrN8yV8sSOiwsmaqUxvve
+----------------------------------------
